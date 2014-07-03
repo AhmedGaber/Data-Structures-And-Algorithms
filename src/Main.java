@@ -1,6 +1,8 @@
 import java.util.Scanner;
 
+import DataStructures.Bag;
 import DataStructures.Union_Find;
+import DataStructures.Stack.ArrayStack;
 
 public class Main {
 
@@ -8,20 +10,23 @@ public class Main {
 	Scanner in = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		UF.union(4, 3);
-		System.out.println(UF.connected(2, 5) ? "Yes!" : "No");
-		UF.union(3, 8);
-		UF.union(6, 5);
-		UF.union(2, 5);
-		System.out.println(UF.connected(7, 3) ? "Yes!" : "No");
-		UF.union(9, 4);
-		UF.print();
-		UF.union(2, 1);
-		UF.union(5, 0);
-		UF.union(7, 2);
-		UF.union(6, 1);
-		UF.print();
-		UF.union(7, 3);
-		UF.print();
+		Bag bag = new Bag<Integer>();
+		for (int i = 2; i < 50; i += 2) {
+			bag.add(i);
+		}
+		while (bag.iterator().hasNext())
+			System.out.println(bag.iterator().next());
+
+		System.out.println("=============================");
+
+		ArrayStack stack = new ArrayStack<Integer>();
+		for (int i = 2; i < 50; i += 2) {
+			stack.push(i);
+		}
+		java.util.Iterator i = stack.iterator();
+		while (i.hasNext())
+			System.out.println(i.next());
+
 	}
+
 }

@@ -61,7 +61,8 @@ public class ArrayStack<Type> implements Iterable<Type> {
 
 		@Override
 		public Type next() {
-			return stack[--i];
+			return stack[--i]; //don't know whether to decrease size or i
+			                   // Java's implementation decreases i
 		}
 
 		// not allowed
