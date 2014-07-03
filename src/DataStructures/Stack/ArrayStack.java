@@ -1,6 +1,8 @@
 package DataStructures.Stack;
 
-public class ArrayStack <Type> {
+import java.util.Iterator;
+
+public class ArrayStack<Type> implements Iterable<Type> {
 	private int size;
 	private Type[] stack;
 
@@ -43,4 +45,30 @@ public class ArrayStack <Type> {
 		}
 		stack = newArray;
 	}
+
+	@Override
+	public Iterator<Type> iterator() {
+		return new StackIterator();
+	}
+
+	private class StackIterator implements Iterator<Type> {
+		private int i = size;
+
+		@Override
+		public boolean hasNext() {
+			return i > 0;
+		}
+
+		@Override
+		public Type next() {
+			return stack[--i];
+		}
+
+		// not allowed
+		@Override
+		public void remove() {
+		}
+
+	}
+
 }
