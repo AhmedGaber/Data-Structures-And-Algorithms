@@ -20,11 +20,13 @@ public class Main {
 		a[i] = r.nextInt(21);
 		System.out.print(a[i] + " ");
 	}
-	new SelectionSort().sort(a);
+	System.out.println("\n" + a.length);
+	new InsertionSort().sort(a);
 	System.out.println("\nAfter Sorting");
 	for (int i = 0; i < a.length; i++) {
-		System.out.print(i + " ");
+		System.out.print(a[i] + " ");
 	}
+	System.out.println("\n" + a.length);
 	}
 
 }
