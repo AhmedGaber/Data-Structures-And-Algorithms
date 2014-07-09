@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import Algorithms.Sort.InsertionSort;
 import Algorithms.Sort.SelectionSort;
+import Algorithms.Sort.ShellSort;
 import DataStructures.Bag;
 import DataStructures.Union_Find;
 import DataStructures.Stack.ArrayStack;
@@ -21,7 +22,7 @@ public class Main {
 		System.out.print(a[i] + " ");
 	}
 	System.out.println("\n" + a.length);
-	new InsertionSort().sort(a);
+	new ShellSort().sort(a);
 	System.out.println("\nAfter Sorting");
 	for (int i = 0; i < a.length; i++) {
 		System.out.print(a[i] + " ");
