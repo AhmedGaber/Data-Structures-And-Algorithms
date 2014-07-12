@@ -27,6 +27,12 @@ public class Main {
 		for (int i = 0; i < a.length; i++) {
 			System.out.print(a[i] + " ");
 		}
+		new Shuffle().shuffle(a);
+		System.out.println("\nAfter Shuffling");
+		for (int i = 0; i < a.length; i++) {
+			System.out.print(a[i] + " ");
+		}
+
 	}
 
 }
