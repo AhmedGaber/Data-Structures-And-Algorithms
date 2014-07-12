@@ -6,8 +6,8 @@ public class Shuffle {
 
 	public static void shuffle(Object[] a) {
 		for (int i = 0; i < a.length; i++) {
-			Random r = new Random(i + 1);
-			exch(a, i, r.nextInt());
+			Random r = new Random();
+			exch(a, i, r.nextInt(i + 1));
 		}
 	}
 
