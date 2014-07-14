@@ -47,6 +47,8 @@ public class Deque<Item> implements Iterable<Item> {
 	 * @param item
 	 */
 	public void addFirst(Item item) {
+		if (item == null)
+			throw new NullPointerException("Null is not a valid input");
 		if (isEmpty()) {
 			this.first.item = item;
 			this.last = first;
@@ -67,6 +69,8 @@ public class Deque<Item> implements Iterable<Item> {
 	 * @param item
 	 */
 	public void addLast(Item item) {
+		if (item == null)
+			throw new NullPointerException("Null is not a valid input");
 		if (isEmpty())
 			addFirst(item);
 		else {
@@ -86,9 +90,9 @@ public class Deque<Item> implements Iterable<Item> {
 	 * @return
 	 */
 	public Item removeFirst() {
-		if (isEmpty()) {
-			// throw an exception here
-		} else if (size() == 1) {
+		if (isEmpty())
+			throw new java.util.NoSuchElementException("Deque is empty.");
+		else if (size() == 1) {
 			Item item = first.item;
 			first = null;
 			size--;
@@ -107,9 +111,9 @@ public class Deque<Item> implements Iterable<Item> {
 	 * @return
 	 */
 	public Item removeLast() {
-		if (isEmpty()) {
-			// throw an exception here
-		} else if (size() == 1)
+		if (isEmpty())
+			throw new java.util.NoSuchElementException("Deque is empty.");
+		else if (size() == 1)
 			return removeFirst();
 		Item item = last.item;
 		last = last.prev;
@@ -136,6 +140,8 @@ public class Deque<Item> implements Iterable<Item> {
 
 		@Override
 		public Item next() {
+			if (current.item == null)
+				throw new java.util.NoSuchElementException("No item to return.");
 			Item x = current.item;
 			current = current.next;
 			return x;
@@ -144,7 +150,10 @@ public class Deque<Item> implements Iterable<Item> {
 		// not allowed
 		@Override
 		public void remove() {
+			throw new UnsupportedOperationException(
+					"remove() is an unSupported operation");
 		}
 
 	}
+
 }
