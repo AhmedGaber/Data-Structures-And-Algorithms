@@ -45,7 +45,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
      */
     public void enqueue(Item item) {
         if (item == null)
-            throw new NullPointerException("Null is not a valid input");
+            throw new NullPointerException();
         if (next == a.length)
             resize(2 * a.length);
         a[next] = item;
@@ -60,8 +60,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
      */
     public Item dequeue() {
         if (isEmpty())
-            throw new java.util.NoSuchElementException(
-                    "No Elements in the Queue.");
+            throw new java.util.NoSuchElementException();
         int n = new Random().nextInt(next); // Get an index at random, swap this
                                             // index with "next" index, return
                                             // it's value and remove it.
@@ -79,9 +78,8 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
      * @return
      */
     public Item sample() {
-        if (isEmpty()) {
-            // throw an exception here
-        }
+        if (isEmpty())
+            throw new java.util.NoSuchElementException();
         return a[new Random().nextInt(next)];
     }
 
@@ -97,29 +95,31 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     private class RQIterator implements Iterator<Item> {
         private int i;
+        private Item[] ar;
 
         public RQIterator() {
             this.i = next - 1;
-            new Shuffle().shuffle(a, 0, next - 1);
+            this.ar = a;
+            if (i > 0)
+                new Shuffle().shuffle(ar, 0, i - 1);
         }
 
         @Override
         public boolean hasNext() {
-            return i > 0;
+            return i >= 0;
         }
 
         @Override
         public Item next() {
             if (!hasNext())
-                throw new java.util.NoSuchElementException("No item to return.");
-            return a[--i];
+                throw new java.util.NoSuchElementException();
+            return ar[i--];
         }
 
         // not allowed
         @Override
         public void remove() {
-            throw new UnsupportedOperationException(
-                    "remove() is an unSupported operation");
+            throw new UnsupportedOperationException();
         }
 
     }
@@ -137,5 +137,4 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         array[i] = array[j];
         array[j] = k;
     }
-
 }
