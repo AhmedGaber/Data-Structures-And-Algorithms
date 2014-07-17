@@ -3,6 +3,8 @@ package DataStructures.Queue;
 import java.util.Iterator;
 import java.util.Random;
 
+import Algorithms.Shuffle;
+
 public class RandomizedQueue<Item> implements Iterable<Item> {
 
     private int size;
@@ -98,7 +100,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
         public RQIterator() {
             this.i = next - 1;
-            // StdRandom.shuffle(a, 0, next - 1);
+            new Shuffle().shuffle(a, 0, next - 1);
         }
 
         @Override
