@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import Algorithms.Shuffle;
 import Algorithms.Sort.InsertionSort;
+import Algorithms.Sort.MergSort;
 import Algorithms.Sort.SelectionSort;
 import Algorithms.Sort.ShellSort;
 import DataStructures.Bag;
@@ -19,30 +20,32 @@ public class Main {
 
     public static void main(String[] args) {
         Comparable<Integer>[] a = new Integer[20];
-        // Random r = new Random();
-        // System.out.println("Before Sort: ");
-        // for (int i = 0; i < a.length; i++) {
-        // a[i] = r.nextInt(21);
-        // System.out.print(a[i] + " ");
-        // }
-        // new ShellSort().sort(a);
-        // System.out.println("\nAfter Sorting");
-        // for (int i = 0; i < a.length; i++) {
-        // System.out.print(a[i] + " ");
-        // }
-        // new Shuffle().shuffle(a);
-        // System.out.println("\nAfter Shuffling");
-        // for (int i = 0; i < a.length; i++) {
-        // System.out.print(a[i] + " ");
-        // }
+         Random r = new Random();
+         System.out.println("Before Sort: ");
+         for (int i = 0; i < a.length; i++) {
+         a[i] = r.nextInt(21);
+         System.out.print(a[i] + " ");
+         }
+         new MergSort().sort(a);
+         System.out.println("\nAfter Sorting");
+         for (int i = 0; i < a.length; i++) {
+         System.out.print(a[i] + " ");
+         }
+         new Shuffle().shuffle(a);
+         System.out.println("\nAfter Shuffling");
+         for (int i = 0; i < a.length; i++) {
+         System.out.print(a[i] + " ");
+         }
 
-        LinkedListQueue<Integer> d = new LinkedListQueue<>();
-        for (int i = 0; i < 10; i++) {
-            d.enqueue(i);
-        }
-        Iterator i = d.iterator();
-        while (i.hasNext())
-            System.out.println(i.next());
+//        LinkedListQueue<Integer> d = new LinkedListQueue<>();
+//        for (int i = 0; i < 10; i++) {
+//            d.enqueue(i);
+//        }
+//        Iterator i = d.iterator();
+//        while (i.hasNext())
+//            System.out.println(i.next());
+        
+        
     }
 
 }
