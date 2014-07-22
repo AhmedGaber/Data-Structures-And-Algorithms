@@ -13,6 +13,8 @@ public class MergSort {
         int mid = lo + (hi - lo) / 2;
         sort(a, aux, lo, mid);
         sort(a, aux, mid + 1, hi);
+        if (!less(a[mid + 1], a[mid]))
+            return;
         merge(a, aux, lo, mid, hi);
     }
 
