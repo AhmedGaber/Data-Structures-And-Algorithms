@@ -7,6 +7,12 @@ public class MergSort {
         sort(a, aux, 0, a.length - 1);
     }
 
+    /**
+     * bottom-up Merge Sort Algorithm
+     * 
+     * @param a
+     *            original array
+     */
     public static void BottomUpMergeSort(Comparable[] a) {
         Comparable[] aux = new Comparable[a.length];
         for (int i = 1; i < aux.length; i += i) {
@@ -17,6 +23,18 @@ public class MergSort {
         }
     }
 
+    /**
+     * top-down (recursive) Merge Sort Algorithm
+     * 
+     * @param a
+     *            original array
+     * @param aux
+     *            temporary array
+     * @param lo
+     *            lower index
+     * @param hi
+     *            higher index
+     */
     private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
         if (hi <= lo)
             return;
@@ -28,6 +46,15 @@ public class MergSort {
         merge(a, aux, lo, mid, hi);
     }
 
+    /**
+     * Merging method
+     * 
+     * @param a
+     * @param aux
+     * @param lo
+     * @param mid
+     * @param hi
+     */
     private static void merge(Comparable[] a, Comparable[] aux, int lo,
             int mid, int hi) {
         for (int k = lo; k <= hi; k++)
