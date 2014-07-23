@@ -7,6 +7,16 @@ public class MergSort {
         sort(a, aux, 0, a.length - 1);
     }
 
+    public static void BottomUpMergeSort(Comparable[] a) {
+        Comparable[] aux = new Comparable[a.length];
+        for (int i = 1; i < aux.length; i += i) {
+            for (int j = 0; j < aux.length - i; j += i + i) {
+                merge(a, aux, j, i + j - 1,
+                        Math.min(j + i + i - 1, aux.length - 1));
+            }
+        }
+    }
+
     private static void sort(Comparable[] a, Comparable[] aux, int lo, int hi) {
         if (hi <= lo)
             return;
