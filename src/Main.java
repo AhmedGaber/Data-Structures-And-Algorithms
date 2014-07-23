@@ -19,13 +19,15 @@ public class Main {
     Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Comparable<Integer>[] a = new Integer[20];
+        Comparable<Integer>[] a = new Integer[12];
         Random r = new Random();
         System.out.println("Before Sort: ");
         for (int i = 0; i < a.length; i++) {
             a[i] = r.nextInt(21);
             System.out.print(a[i] + " ");
         }
+
+        a[0] = 23;
         new MergSort().BottomUpMergeSort(a);
         System.out.println("\nAfter Sorting");
         for (int i = 0; i < a.length; i++) {
