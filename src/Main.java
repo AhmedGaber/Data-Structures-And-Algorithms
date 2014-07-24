@@ -5,6 +5,7 @@ import java.util.Scanner;
 import Algorithms.Shuffle;
 import Algorithms.Sort.InsertionSort;
 import Algorithms.Sort.MergSort;
+import Algorithms.Sort.QuickSort;
 import Algorithms.Sort.SelectionSort;
 import Algorithms.Sort.ShellSort;
 import DataStructures.Bag;
@@ -28,7 +29,7 @@ public class Main {
         }
 
         a[0] = 23;
-        new MergSort().BottomUpMergeSort(a);
+        new QuickSort().sort(a);
         System.out.println("\nAfter Sorting");
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i] + " ");
