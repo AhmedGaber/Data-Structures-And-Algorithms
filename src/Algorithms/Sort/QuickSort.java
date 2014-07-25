@@ -3,14 +3,17 @@ package Algorithms.Sort;
 import Algorithms.Shuffle;
 
 /**
+ * This class takes an array of any type and sort it
  * 
- * @author 3Arrows
+ * @author Gaber
  * 
  */
 public class QuickSort {
     /**
+     * Call this method with the original array to be sorted
      * 
      * @param a
+     *            original array
      */
     public static void sort(Comparable[] a) {
         new Shuffle().shuffle(a);
@@ -18,10 +21,14 @@ public class QuickSort {
     }
 
     /**
+     * A recursive method that do the sorting work
      * 
      * @param a
+     *            original array
      * @param lo
+     *            lower index to start from
      * @param hi
+     *            upper index to check last
      */
     private static void sort(Comparable[] a, int lo, int hi) {
         if (hi <= lo)
@@ -32,6 +39,7 @@ public class QuickSort {
     }
 
     /**
+     * This method partitions the array and doing the merging work
      * 
      * @param a
      * @param lo
@@ -56,6 +64,7 @@ public class QuickSort {
     }
 
     /**
+     * Check if an object is less than another
      * 
      * @param p
      * @param q
@@ -66,6 +75,7 @@ public class QuickSort {
     }
 
     /**
+     * Exchanges two indexes in the array
      * 
      * @param a
      * @param i
