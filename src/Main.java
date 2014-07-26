@@ -3,6 +3,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 import Algorithms.Shuffle;
+import Algorithms.Sort.BubbleSort;
 import Algorithms.Sort.InsertionSort;
 import Algorithms.Sort.MergSort;
 import Algorithms.Sort.QuickSort;
@@ -27,9 +28,7 @@ public class Main {
             a[i] = r.nextInt(21);
             System.out.print(a[i] + " ");
         }
-
-        a[0] = 23;
-        new QuickSort().sort(a);
+        new BubbleSort().sort(a);
         System.out.println("\nAfter Sorting");
         for (int i = 0; i < a.length; i++) {
             System.out.print(a[i] + " ");
