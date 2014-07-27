@@ -44,6 +44,7 @@ public class ArrayQueue<Item> implements Iterable<Item> {
      * @param item
      */
     public void enqueue(Item item) {
+
     }
 
     /**
@@ -52,6 +53,7 @@ public class ArrayQueue<Item> implements Iterable<Item> {
      * @return
      */
     public Item dequeue() {
+        return null;
     }
 
     /**
@@ -60,6 +62,7 @@ public class ArrayQueue<Item> implements Iterable<Item> {
      * @return
      */
     public Item sample() {
+        return null;
     }
 
     /**
@@ -81,6 +84,7 @@ public class ArrayQueue<Item> implements Iterable<Item> {
 
         @Override
         public boolean hasNext() {
+            return false;
         }
 
         @Override
