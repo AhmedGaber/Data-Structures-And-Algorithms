@@ -21,17 +21,17 @@ public class Main {
     Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Comparable<Integer>[] a = new Integer[12];
+        Comparable<Integer>[] a = new Integer[100000];
         Random r = new Random();
         System.out.println("Before Sort: ");
         for (int i = 0; i < a.length; i++) {
-            a[i] = r.nextInt(21);
-            System.out.print(a[i] + " ");
+            a[i] = r.nextInt(100000);
+           // System.out.print(a[i] + " ");
         }
-        new BubbleSort().sort(a);
+        new MergSort().sort(a);
         System.out.println("\nAfter Sorting");
         for (int i = 0; i < a.length; i++) {
-            System.out.print(a[i] + " ");
+            System.out.println(a[i] + " ");
         }
         // LinkedListQueue<Integer> d = new LinkedListQueue<>();
         // for (int i = 0; i < 10; i++) {
