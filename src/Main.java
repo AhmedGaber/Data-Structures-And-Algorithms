@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import Algorithms.Shuffle;
 import Algorithms.Sort.BubbleSort;
+import Algorithms.Sort.HeapSort;
 import Algorithms.Sort.InsertionSort;
 import Algorithms.Sort.MergSort;
 import Algorithms.Sort.QuickSort;
@@ -21,17 +22,17 @@ public class Main {
     Scanner in = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Comparable<Integer>[] a = new Integer[100000];
+        Comparable<Integer>[] a = new Integer[20];
         Random r = new Random();
         System.out.println("Before Sort: ");
         for (int i = 0; i < a.length; i++) {
-            a[i] = r.nextInt(100000);
-           // System.out.print(a[i] + " ");
+            a[i] = r.nextInt(50);
+            System.out.print(a[i] + " ");
         }
-        new MergSort().sort(a);
+        new HeapSort().sort(a);
         System.out.println("\nAfter Sorting");
         for (int i = 0; i < a.length; i++) {
-            System.out.println(a[i] + " ");
+            System.out.print(a[i] + " ");
         }
         // LinkedListQueue<Integer> d = new LinkedListQueue<>();
         // for (int i = 0; i < 10; i++) {

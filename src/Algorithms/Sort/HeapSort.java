@@ -3,11 +3,12 @@ package Algorithms.Sort;
 public class HeapSort {
     public static void sort(Comparable[] a) {
         int N = a.length;
-        for (int K = N / 2; K >= 1; K--)
-            sink(a, K, N);
-        while (N > 1) {
-            exch(a, 1, N);
-            sink(a, 1, --N);
+        for (int k = N / 2; k >= 0; k--)
+            sink(a, k, N);
+        N = a.length - 1;
+        while (N < a.length && N >= 0) {
+            exch(a, 0, N);
+            sink(a, 0, --N);
         }
     }
 
@@ -16,7 +17,7 @@ public class HeapSort {
             int j = 2 * k;
             if (j < N && less(a, j, j + 1))
                 j++;
-            if (!less(a, k, j))
+            if (j == a.length || !less(a, k, j))
                 break;
             exch(a, k, j);
             k = j;
