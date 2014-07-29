@@ -21,10 +21,15 @@ public class MinPQ<Key extends Comparable<Key>> {
     }
 
     public Key delMin() {
+        if (isEmpty())
+            throw new java.util.NoSuchElementException();
+        Key min = pq[1];
+        exch(1, N--);
+        sink(1);
+        pq[N + 1] = null;
         if (N > 0 && N == pq.length / 4)
             resize(pq.length / 2);
-        // modify that
-        return null;
+        return min;
     }
 
     public boolean isEmpty() {
@@ -32,6 +37,8 @@ public class MinPQ<Key extends Comparable<Key>> {
     }
 
     public Key min() {
+        if (isEmpty())
+            throw new java.util.NoSuchElementException();
         return pq[0];
     }
 
@@ -40,7 +47,7 @@ public class MinPQ<Key extends Comparable<Key>> {
     }
 
     private void swim(int k) {
-        while (k > 1 && less(k / 2, k)) {
+        while (k > 1 && greater(k / 2, k)) {
             exch(k, k / 2);
             k = k / 2;
         }
@@ -48,7 +55,15 @@ public class MinPQ<Key extends Comparable<Key>> {
     }
 
     private void sink(int k) {
-
+        while (2 * k <= N) {
+            int j = 2 * k;
+            if (j < N && greater(j, j + 1))
+                j++;
+            if (!greater(k, j))
+                break;
+            exch(k, j);
+            k = j;
+        }
     }
 
     private boolean greater(int i, int j) {

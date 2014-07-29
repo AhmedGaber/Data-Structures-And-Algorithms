@@ -21,10 +21,15 @@ public class MaxPQ<Key extends Comparable<Key>> {
     }
 
     public Key delMax() {
+        if (isEmpty())
+            throw new java.util.NoSuchElementException();
+        Key max = pq[1];
+        exch(1, N--);
+        sink(1);
+        pq[N + 1] = null;
         if (N > 0 && N == pq.length / 4)
             resize(pq.length / 2);
-        // modify that
-        return null;
+        return max;
     }
 
     public boolean isEmpty() {
@@ -32,6 +37,8 @@ public class MaxPQ<Key extends Comparable<Key>> {
     }
 
     public Key max() {
+        if (isEmpty())
+            throw new java.util.NoSuchElementException();
         return pq[0];
     }
 
@@ -47,7 +54,15 @@ public class MaxPQ<Key extends Comparable<Key>> {
     }
 
     private void sink(int k) {
-
+        while (2 * k <= N) {
+            int j = 2 * k;
+            if (j < N && less(j, j + 1))
+                j++;
+            if (!less(k, j))
+                break;
+            exch(k, j);
+            k = j;
+        }
     }
 
     private boolean less(int i, int j) {
