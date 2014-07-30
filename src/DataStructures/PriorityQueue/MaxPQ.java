@@ -1,20 +1,25 @@
 package DataStructures.PriorityQueue;
 
+import java.util.Scanner;
+
 public class MaxPQ<Key extends Comparable<Key>> {
     private Key[] pq;
     private int N;
-    private int next;
 
-    public void MaxPQ() {
-        pq = (Key[]) new Comparable[2];
+    public MaxPQ() {
+        this.pq = (Key[]) new Comparable[2];
+        this.N = -1;
     }
 
-    public void MaxPQ(Key[] a) {
+    public MaxPQ(Key[] a) {
         this.pq = a;
+        this.N = a.length - 1;
+        for (int k = N / 2; k >= 0; k--)
+            sink(k);
     }
 
     public void insert(Key v) {
-        if (N == pq.length)
+        if (N == pq.length - 1)
             resize(pq.length * 2);
         pq[++N] = v;
         swim(N);
@@ -23,12 +28,18 @@ public class MaxPQ<Key extends Comparable<Key>> {
     public Key delMax() {
         if (isEmpty())
             throw new java.util.NoSuchElementException();
-        Key max = pq[1];
-        exch(1, N--);
-        sink(1);
+        Key max = pq[0];
+        exch(0, N--);
+        sink(0);
         pq[N + 1] = null;
         if (N > 0 && N == pq.length / 4)
             resize(pq.length / 2);
+
+        for (int i = 0; i <= N; i++) {
+            System.out.print(pq[i] + " ");
+        }
+        System.out.println();
+
         return max;
     }
 
@@ -76,11 +87,22 @@ public class MaxPQ<Key extends Comparable<Key>> {
     }
 
     private void resize(int capacity) {
-        Key[] temp = (Key[]) new Object[capacity];
-        for (int i = 0; i < next; i++) {
+        Key[] temp = (Key[]) new Comparable[capacity];
+        for (int i = 0; i <= N; i++) {
             temp[i] = pq[i];
         }
         this.pq = temp;
     }
 
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Integer a[] = { 44, 78, 10, 36, 25, 46, 67, 140, 17, 99 };
+        MaxPQ<Integer> PQ = new MaxPQ<Integer>(a);
+        while (in.hasNextInt()) {
+            PQ.insert(in.nextInt());
+        }
+        PQ.delMax();
+        PQ.delMax();
+        PQ.delMax();
+    }
 }

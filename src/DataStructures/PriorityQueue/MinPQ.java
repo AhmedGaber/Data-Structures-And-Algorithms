@@ -1,16 +1,20 @@
 package DataStructures.PriorityQueue;
 
+import java.util.Scanner;
+
 public class MinPQ<Key extends Comparable<Key>> {
     private Key[] pq;
     private int N;
-    private int next;
-
-    public void MinPQ() {
+    public MinPQ() {
         pq = (Key[]) new Comparable[2];
+        this.N = -1;
     }
 
-    public void MinPQ(Key[] a) {
+    public MinPQ(Key[] a) {
         this.pq = a;
+        this.N = a.length-1;
+        for (int k = N/2 ; k >= 0; k--)
+            sink(k);   
     }
 
     public void insert(Key v) {
@@ -23,9 +27,9 @@ public class MinPQ<Key extends Comparable<Key>> {
     public Key delMin() {
         if (isEmpty())
             throw new java.util.NoSuchElementException();
-        Key min = pq[1];
-        exch(1, N--);
-        sink(1);
+        Key min = pq[0];
+        exch(0, N--);
+        sink(0);
         pq[N + 1] = null;
         if (N > 0 && N == pq.length / 4)
             resize(pq.length / 2);
@@ -39,7 +43,7 @@ public class MinPQ<Key extends Comparable<Key>> {
     public Key min() {
         if (isEmpty())
             throw new java.util.NoSuchElementException();
-        return pq[0];
+        return pq[1];
     }
 
     public int size() {
@@ -77,10 +81,20 @@ public class MinPQ<Key extends Comparable<Key>> {
     }
 
     private void resize(int capacity) {
-        Key[] temp = (Key[]) new Object[capacity];
-        for (int i = 0; i < next; i++) {
+        Key[] temp = (Key[]) new Comparable[capacity];
+        for (int i = 0; i <= N; i++) {
             temp[i] = pq[i];
         }
         this.pq = temp;
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        Integer a[] = { 99, 78, 70, 36, 25, 46, 67, 10, 17, 14 };
+        MinPQ<Integer> PQ = new MinPQ<Integer>(a);
+        System.out.println(PQ.delMin());
+        System.out.println(PQ.delMin());
+        System.out.println(PQ.delMin());
+        System.out.println(PQ.delMin());
+
     }
 }
