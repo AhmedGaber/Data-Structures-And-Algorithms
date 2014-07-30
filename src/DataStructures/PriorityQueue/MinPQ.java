@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class MinPQ<Key extends Comparable<Key>> {
     private Key[] pq;
     private int N;
+
     public MinPQ() {
         pq = (Key[]) new Comparable[2];
         this.N = -1;
@@ -12,9 +13,9 @@ public class MinPQ<Key extends Comparable<Key>> {
 
     public MinPQ(Key[] a) {
         this.pq = a;
-        this.N = a.length-1;
-        for (int k = N/2 ; k >= 0; k--)
-            sink(k);   
+        this.N = a.length - 1;
+        for (int k = N / 2; k >= 0; k--)
+            sink(k);
     }
 
     public void insert(Key v) {
@@ -86,15 +87,5 @@ public class MinPQ<Key extends Comparable<Key>> {
             temp[i] = pq[i];
         }
         this.pq = temp;
-    }
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        Integer a[] = { 99, 78, 70, 36, 25, 46, 67, 10, 17, 14 };
-        MinPQ<Integer> PQ = new MinPQ<Integer>(a);
-        System.out.println(PQ.delMin());
-        System.out.println(PQ.delMin());
-        System.out.println(PQ.delMin());
-        System.out.println(PQ.delMin());
-
     }
 }

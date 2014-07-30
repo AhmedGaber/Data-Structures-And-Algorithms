@@ -34,12 +34,6 @@ public class MaxPQ<Key extends Comparable<Key>> {
         pq[N + 1] = null;
         if (N > 0 && N == pq.length / 4)
             resize(pq.length / 2);
-
-        for (int i = 0; i <= N; i++) {
-            System.out.print(pq[i] + " ");
-        }
-        System.out.println();
-
         return max;
     }
 
@@ -92,17 +86,5 @@ public class MaxPQ<Key extends Comparable<Key>> {
             temp[i] = pq[i];
         }
         this.pq = temp;
-    }
-
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        Integer a[] = { 44, 78, 10, 36, 25, 46, 67, 140, 17, 99 };
-        MaxPQ<Integer> PQ = new MaxPQ<Integer>(a);
-        while (in.hasNextInt()) {
-            PQ.insert(in.nextInt());
-        }
-        PQ.delMax();
-        PQ.delMax();
-        PQ.delMax();
     }
 }
