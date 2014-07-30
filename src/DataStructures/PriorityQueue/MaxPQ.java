@@ -8,13 +8,15 @@ public class MaxPQ<Key extends Comparable<Key>> {
 
     public MaxPQ() {
         this.pq = (Key[]) new Comparable[2];
-        this.N = -1;
+        this.N = 0;
     }
 
     public MaxPQ(Key[] a) {
-        this.pq = a;
-        this.N = a.length - 1;
-        for (int k = N / 2; k >= 0; k--)
+        this.pq = (Key[]) new Comparable[a.length + 1];
+        for (int i = 1; i < pq.length; i++)
+            pq[i] = a[i - 1];
+        this.N = a.length;
+        for (int k = N / 2; k >= 1; k--)
             sink(k);
     }
 
@@ -28,11 +30,11 @@ public class MaxPQ<Key extends Comparable<Key>> {
     public Key delMax() {
         if (isEmpty())
             throw new java.util.NoSuchElementException();
-        Key max = pq[0];
-        exch(0, N--);
-        sink(0);
+        Key max = pq[1];
+        exch(1, N--);
+        sink(1);
         pq[N + 1] = null;
-        if (N > 0 && N == pq.length / 4)
+        if (N == pq.length / 4)
             resize(pq.length / 2);
         return max;
     }
@@ -44,7 +46,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
     public Key max() {
         if (isEmpty())
             throw new java.util.NoSuchElementException();
-        return pq[0];
+        return pq[1];
     }
 
     public int size() {

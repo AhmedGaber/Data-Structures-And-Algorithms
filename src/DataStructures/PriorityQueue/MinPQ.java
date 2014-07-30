@@ -7,19 +7,21 @@ public class MinPQ<Key extends Comparable<Key>> {
     private int N;
 
     public MinPQ() {
-        pq = (Key[]) new Comparable[2];
-        this.N = -1;
+        this.pq = (Key[]) new Comparable[2];
+        this.N = 0;
     }
 
     public MinPQ(Key[] a) {
-        this.pq = a;
-        this.N = a.length - 1;
-        for (int k = N / 2; k >= 0; k--)
+        this.pq = (Key[]) new Comparable[a.length + 1];
+        for (int i = 1; i < pq.length; i++)
+            pq[i] = a[i - 1];
+        this.N = a.length;
+        for (int k = N / 2; k >= 1; k--)
             sink(k);
     }
 
     public void insert(Key v) {
-        if (N == pq.length)
+        if (N == pq.length - 1)
             resize(pq.length * 2);
         pq[++N] = v;
         swim(N);
@@ -28,11 +30,11 @@ public class MinPQ<Key extends Comparable<Key>> {
     public Key delMin() {
         if (isEmpty())
             throw new java.util.NoSuchElementException();
-        Key min = pq[0];
-        exch(0, N--);
-        sink(0);
+        Key min = pq[1];
+        exch(1, N--);
+        sink(1);
         pq[N + 1] = null;
-        if (N > 0 && N == pq.length / 4)
+        if (N == pq.length / 4)
             resize(pq.length / 2);
         return min;
     }
