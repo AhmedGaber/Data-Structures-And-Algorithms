@@ -6,6 +6,7 @@
  * @param <Key>
  * @param <Value>
  */
+
 package DataStructures.BinarySearchTree;
 
 import java.util.LinkedList;
@@ -207,6 +208,25 @@ public class BST<Key extends Comparable<Key>, Value> {
         node.right = deleteMin(node.right);
         node.count = 1 + size(node.right) + size(node.left);
         return node;
+    }
+
+    /**
+     * Returns how many keys < k
+     */
+    public int rank(Key key) {
+        return rank(key, root);
+    }
+
+    private int rank(Key key, Node node) {
+        if (node == null)
+            return 0;
+        int cmp = key.compareTo(node.key);
+        if (cmp < 0)
+            return rank(key, node.left);
+        else if (cmp > 0)
+            return 1 + size(node.left) + rank(key, node.right);
+        else
+            return size(node.left);
     }
 
 }
