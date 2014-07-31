@@ -160,6 +160,32 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
     /**
+     * Returns queue containing all tree nodes in a level-order sequence
+     * 
+     * @return
+     */
+    public Iterable<Key> levelOrderTraversal() {
+        Queue<Key> q = new LinkedList<Key>();
+
+        if (root == null)
+            return q;
+
+        Queue<Node> tempQ = new LinkedList<Node>();
+        Node n = root;
+        tempQ.add(n);
+
+        while (!tempQ.isEmpty()) {
+            n = tempQ.poll();
+            q.add(n.key);
+            if (n.left != null)
+                tempQ.add(n.left);
+            if (n.right != null)
+                tempQ.add(n.right);
+        }
+        return q;
+    }
+
+    /**
      * Returns number of nodes in the tree
      * 
      * @return
