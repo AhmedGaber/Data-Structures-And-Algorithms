@@ -84,6 +84,8 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @param key
      */
     public void delete(Key key) {
+        if (root == null)
+            throw new java.util.NoSuchElementException();
         root = delete(root, key);
     }
 
