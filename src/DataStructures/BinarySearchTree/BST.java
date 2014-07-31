@@ -1,5 +1,8 @@
 package DataStructures.BinarySearchTree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * An Implementation of the Binary Search Tree
  * 
@@ -142,6 +145,17 @@ public class BST<Key extends Comparable<Key>, Value> {
      * @return
      */
     public Iterable<Key> iterator() {
+        Queue<Key> q = new LinkedList<Key>();
+        inorder(root, q);
+        return q;
+    }
+
+    private void inorder(Node node, Queue<Key> q) {
+        if (node == null)
+            return;
+        inorder(node.left, q);
+        q.add(node.key);
+        inorder(node.right, q);
     }
 
     /**
