@@ -1,8 +1,3 @@
-package DataStructures.BinarySearchTree;
-
-import java.util.LinkedList;
-import java.util.Queue;
-
 /**
  * An Implementation of the Binary Search Tree
  * 
@@ -11,6 +6,11 @@ import java.util.Queue;
  * @param <Key>
  * @param <Value>
  */
+package DataStructures.BinarySearchTree;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BST<Key extends Comparable<Key>, Value> {
     private Node root;
 
