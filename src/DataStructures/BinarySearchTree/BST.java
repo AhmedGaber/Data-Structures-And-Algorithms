@@ -255,4 +255,32 @@ public class BST<Key extends Comparable<Key>, Value> {
             return size(node.left);
     }
 
+    /**
+     * Calculates the largest key <= a given key
+     * 
+     * @param key
+     * @return
+     */
+    public Key floor(Key key) {
+        Node node = floor(root, key);
+        if (node == null)
+            return null;
+        return node.key;
+    }
+
+    private Node floor(Node node, Key key) {
+        if (node == null)
+            return null;
+        int cmp = key.compareTo(node.key);
+        if (cmp == 0)
+            return node;
+        if (cmp < 0)
+            return floor(node.left, key);
+        Node t = floor(node.right, key);
+        if (t != null)
+            return t;
+        else
+            return node;
+    }
+
 }
