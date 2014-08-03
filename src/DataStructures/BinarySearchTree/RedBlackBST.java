@@ -1,3 +1,11 @@
+/**
+ * An Implementation of the Red-Black Binary Search Tree
+ * 
+ * @author Ahmed Gaber
+ * 
+ * @param <Key>
+ * @param <Value>
+ */
 package DataStructures.BinarySearchTree;
 
 public class RedBlackBST<Key extends Comparable<Key>, Value> {
@@ -5,12 +13,19 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
     private static final boolean RED = true;
     private static final boolean BLACK = false;
 
+    /**
+     * Node is the basic structure of the tree.
+     * 
+     * @author Ahmed Gaber
+     * 
+     */
     private class Node {
         Key key;
         Value value;
         Node left;
         Node right;
         boolean color;
+        private int count; // number of nodes in this node's subtree
 
         public Node(Key key, Value value) {
             this.key = key;
@@ -29,6 +44,21 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
             return false;
         return node.color == RED;
 
+    }
+
+    /**
+     * Returns number of nodes in the tree
+     * 
+     * @return
+     */
+    public int size() {
+        return size(root);
+    }
+
+    private int size(Node node) {
+        if (node == null)
+            return 0;
+        return node.count;
     }
 
     private Node rotateLeft(Node node) {
@@ -58,6 +88,16 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         node.right.color = BLACK;
     }
 
+    /**
+     * Associates value with key.
+     * 
+     * @param key
+     * @param val
+     */
+    public void put(Key key, Value value) {
+        root = put(root, key, value);
+    }
+
     private Node put(Node node, Key key, Value value) {
         if (node == null)
             return new Node(key, value, RED);
@@ -77,6 +117,12 @@ public class RedBlackBST<Key extends Comparable<Key>, Value> {
         return node;
     }
 
+    /**
+     * Returns value corresponding to given key, or null if no such key
+     * 
+     * @param key
+     * @return
+     */
     public Value get(Key key) {
         Node temp = root;
         while (temp != null) {
